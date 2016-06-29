@@ -1,0 +1,63 @@
+[user]
+	name = Tim Blair
+	email = tim@bla.ir
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[alias]
+	co           = checkout
+	ci           = commit
+	cia          = commit -a
+	st           = status -sb
+	br           = branch
+	pl           = !git pull --rebase --prune && git submodule update --init --recursive
+	up           = !git remote update -p && git merge --ff-only @{u} && git submodule update --init --recursive
+	lg           = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%aN>%Creset' --abbrev-commit
+	mrg          = merge --no-ff
+	snapshot     = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+	snap         = snapshot
+  standup      = !git --no-pager log --pretty=oneline --abbrev-commit --all --since yesterday --author `git config user.email`
+	merged       = !git branch -r --merged origin/master | grep -v master | grep -v HEAD | sed 's/  origin\\///g'
+	rm-branch    = !sh -c \"(git branch -D $1 2>/dev/null || true) && git push origin :$1\" -
+	rm-merged    = !git merged | xargs -L1 git rm-branch
+	browse       = !hub browse
+	publish      = !git push -u origin `git symbolic-ref --short HEAD`
+	finish       = !OLD_BRANCH="`git symbolic-ref --short HEAD`" && git co master && git pl && git br -d "$OLD_BRANCH"
+	subup        = !git submodule foreach git pull origin master #&& git submodule update --init --recursive
+	reset-master = !git fetch && git checkout master && git reset --hard origin/master
+	begin        = !git init && git add . && git commit -m "Initial\\ commit" && echo && git --no-pager show --shortstat
+[merge]
+	tool = opendiff
+	ff = false
+[apply]
+	whitespace = nowarn
+[github]
+	user = timblair
+[difftool]
+	prompt = false
+[diff]
+	mnemonicprefix = true
+	algorithm = patience
+[branch]
+	autosetuprebase = always
+[core]
+	editor = /usr/bin/env vim
+	excludesfile = ~/.gitignore
+	pager = `brew --prefix`/share/git-core/contrib/diff-highlight/diff-highlight | less
+[push]
+	default = upstream
+[heroku]
+	account = personal
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
