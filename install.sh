@@ -18,3 +18,6 @@ brew tap Homebrew/bundle
 brew bundle "$HOME/.Brewfile"
 brew cleanup
 brew cask cleanup
+
+# Run the script to set various options and defaults
+"$HOME/.osx"
