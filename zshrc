@@ -3,7 +3,9 @@ ZSH_THEME="miloshadzic"
 plugins=(git brew bundler osx rbenv)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.colours.sh
+
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default-dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 eval "$(rbenv init -)"
 RBENV_ROOT=$HOME/.rbenv
