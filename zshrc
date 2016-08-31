@@ -10,7 +10,8 @@ source $ZSH/themes/$ZSH_THEME.zsh-theme
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default-dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-eval "$(rbenv init -)"
+eval "$(rbenv init --no-rehash - zsh)"
+(rbenv rehash &) 2> /dev/null
 RBENV_ROOT=$HOME/.rbenv
 
 export GOPATH=$HOME/go
