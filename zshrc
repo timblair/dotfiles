@@ -41,5 +41,7 @@ alias v="vim"
 alias s="vi + -c 'set filetype=markdown' ~/Dropbox/scratch.md"
 alias b="git browse"
 alias gtw="fswatch -o -0 . | xargs -0 -n 1 -I {} go test"
+alias repath="cd && cd -"
+alias gup-all='for D in $(ls); do (echo "\n\n>>> $D\n"; cd "$D"; g up); done'
 
 function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
