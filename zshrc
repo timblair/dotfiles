@@ -14,13 +14,14 @@ eval "$(rbenv init --no-rehash - zsh)"
 (rbenv rehash &) 2> /dev/null
 RBENV_ROOT=$HOME/.rbenv
 
-export GOPATH=$HOME/go
-export GOROOT=`go env GOROOT`
-
 export PATH="$HOME/.rbenv/shims:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+
+export GOPATH=$HOME/govuk/gopath
+export GOROOT=`go env GOROOT`
 export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 
-export EDITOR=/usr/local/bin/vi
+export PATH="$HOME/.goenv/bin:$PATH"
+eval "$(goenv init -)"
 export COPYFILE_DISABLE=true
 
 alias ls='ls -G'
