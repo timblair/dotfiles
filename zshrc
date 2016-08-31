@@ -44,4 +44,6 @@ alias gtw="fswatch -o -0 . | xargs -0 -n 1 -I {} go test"
 alias repath="cd && cd -"
 alias gup-all='for D in $(ls); do (echo "\n\n>>> $D\n"; cd "$D"; g up); done'
 
+alias vm='cd ~/govuk/govuk-puppet/development-vm && vagrant up && vagrant ssh && cd -'
+
 function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
