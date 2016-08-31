@@ -1,8 +1,11 @@
+# Load just the bits of OMZ that I care about (the theming and history).
+# At some point I'll pull these out so I don't actually need OMZ at all.
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="miloshadzic"
-plugins=(git brew bundler osx rbenv)
-
-source $ZSH/oh-my-zsh.sh
+source $ZSH/lib/git.zsh
+HIST_STAMPS=yyyy-mm-dd source $ZSH/lib/history.zsh
+source $ZSH/lib/theme-and-appearance.zsh
+source $ZSH/themes/$ZSH_THEME.zsh-theme
 
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default-dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
