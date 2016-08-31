@@ -35,18 +35,10 @@ alias gitx='open -a GitX'
 alias ports='sudo lsof -i -P | grep -i "listen"'
 alias be='bundle exec'
 alias ber='bundle exec rails'
-alias wld='cd ~/Projects/wld'
-alias mobile='cd ~/Projects/mobile'
-alias vm='ssh vm'
 alias tigs='tig status'
 alias g='git'
-alias shadow-off='defaults write com.apple.screencapture disable-shadow -bool true; killall SystemUIServer'
-alias shadow-on='defaults write com.apple.screencapture disable-shadow -bool false; killall SystemUIServer'
 alias v="vim"
-alias p="cd ~/Projects"
-alias _p="cd ~/Projects/_personal"
 alias s="vi + -c 'set filetype=markdown' ~/Dropbox/scratch.md"
-alias oh-my-zsh-up="upgrade_oh_my_zsh"
 alias b="git browse"
 alias gtw="fswatch -o -0 . | xargs -0 -n 1 -I {} go test"
 
