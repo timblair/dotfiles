@@ -22,6 +22,8 @@ export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 
 export PATH="$HOME/.goenv/bin:$PATH"
 eval "$(goenv init -)"
+
+export EDITOR=/usr/local/bin/vim
 export COPYFILE_DISABLE=true
 
 alias ls='ls -G'
