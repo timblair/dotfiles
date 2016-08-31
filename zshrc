@@ -48,4 +48,7 @@ alias vm='cd ~/govuk/govuk-puppet/development-vm && vagrant up && vagrant ssh &&
 gov() { cd ~/govuk/$1; }
 compctl -W ~/govuk/ -/ gov
 
+gosrc() { cd $GOPATH/src/$1; }
+compctl -W $GOPATH/src/ -/ gosrc
+
 function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
