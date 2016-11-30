@@ -27,7 +27,7 @@ brew 'mas'
 brew 'the_silver_searcher'
 brew 'tig'
 brew 'tree'
-brew 'vim'
+brew 'vim', args: ['with-override-system-vi']
 brew 'watch'
 
 # Ruby

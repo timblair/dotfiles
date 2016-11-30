@@ -43,8 +43,11 @@ alias b="git browse"
 alias gtw="fswatch -o -0 . | xargs -0 -n 1 -I {} go test"
 alias repath="cd && cd -"
 alias gup-all='for D in $(ls); do (echo "\n\n>>> $D\n"; cd "$D"; g up); done'
+alias p="ping 8.8.8.8"
+alias venv="virtualenv ENV && source ENV/bin/activate && pip install -r requirements.txt"
 
 alias vm='cd ~/govuk/govuk-puppet/development-vm && vagrant up && vagrant ssh && cd -'
+alias vm-off='cd ~/govuk/govuk-puppet/development-vm && vagrant suspend && cd -'
 gov() { cd ~/govuk/$1; }
 compctl -W ~/govuk/ -/ gov
 

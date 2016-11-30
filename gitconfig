@@ -23,7 +23,7 @@
 	mrg          = merge --no-ff
 	snapshot     = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	snap         = snapshot
-  standup      = !git --no-pager log --pretty=oneline --abbrev-commit --all --since yesterday --author `git config user.email`
+	standup      = !git --no-pager log --pretty=oneline --abbrev-commit --all --since yesterday --author `git config user.email`
 	merged       = !git branch -r --merged origin/master | grep -v master | grep -v HEAD | sed 's/  origin\\///g'
 	rm-branch    = !sh -c \"(git branch -D $1 2>/dev/null || true) && git push origin :$1\" -
 	rm-merged    = !git merged | xargs -L1 git rm-branch
@@ -32,7 +32,9 @@
 	finish       = !OLD_BRANCH="`git symbolic-ref --short HEAD`" && git co master && git pl && git br -d "$OLD_BRANCH"
 	subup        = !git submodule foreach git pull origin master #&& git submodule update --init --recursive
 	reset-master = !git fetch && git checkout master && git reset --hard origin/master
-	begin        = !git init && git add . && git commit -m "Initial\\ commit" && echo && git --no-pager show --shortstat
+	begin        = !git init && git add . && git commit --allow-empty -m "Initial\\ commit" && echo && git --no-pager show --shortstat
+	branch-note  = "!git config branch.$(git symbolic-ref HEAD | sed \"s/refs\\/heads\\///\").description"
+	branches     = "!for b in $(git branch | sed 's/^. //g'); do git branch -vv --list \"$b\"; git config branch.$b.description | sed 's/^/    /'; done"
 [merge]
 	tool = opendiff
 	ff = false
