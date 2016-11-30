@@ -4,7 +4,6 @@ My personal environment settings and machine setup.
 
 ## Prerequisites
 
-* Xcode or Xcode CLT
 * SSH key installed and registered on GitHub
 
 ## Installation
