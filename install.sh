@@ -51,9 +51,9 @@ function install_ruby() {
 # Validate pre-requisites
 ############################################
 
-# OS X version (10.X...): 10 = Yosemite; 11 = El Capitan
+# OS X version (10.X...): 11 = El Capitan; 12 = Sierra
 OSX_VERSION=`sw_vers -productVersion | cut -d. -f2`
-if ! [[ " 10 11 " == *" $OSX_VERSION "* ]]; then
+if ! [[ " 11 12 " == *" $OSX_VERSION "* ]]; then
   cecho "Unknown OS X version: aborting." "red"
   exit 1
 fi
