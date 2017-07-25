@@ -1,8 +1,13 @@
 cask_args appdir: '/Applications'
 
+tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/dupes'
-tap 'caskroom/homebrew-cask'
+tap 'homebrew/services'
+tap 'caskroom/cask'
+tap 'caskroom/drivers'
+tap 'caskroom/fonts'
+tap 'caskroom/versions'
 
 # Environment
 
@@ -13,17 +18,19 @@ brew 'homebrew/dupes/apple-gcc42'
 
 # Tools
 
+brew 'awscli'
 brew 'ctags'
 brew 'curl'
-brew 'exercism'
 brew 'fswatch'
 brew 'git'
-brew 'heroku-toolbelt'
+brew 'graphviz'
+brew 'heroku'
 brew 'highlight'
 brew 'htop-osx'
 brew 'hub'
 brew 'jq'
 brew 'mas'
+brew 'openconnect'
 brew 'the_silver_searcher'
 brew 'tig'
 brew 'tree'
@@ -40,15 +47,18 @@ brew 'rbenv-default-gems'
 # Other languages
 
 brew 'go'
+brew 'gotags'
 
-# Databases + storage
+# Databases, messaging, and storage
 
-brew 'redis', restart_service: true
+brew 'mongodb', restart_service: true
 brew 'mysql', restart_service: true
+brew 'postgresql', restart_service: true
+brew 'rabbitmq', restart_service: true
+brew 'redis', restart_service: true
+brew 'sqlite'
 
 # Fonts
-
-tap 'caskroom/homebrew-fonts'
 
 cask 'font-hack'
 
@@ -62,9 +72,11 @@ cask 'cloak'
 cask 'cloud'
 cask 'dash'
 cask 'dropbox'
+cask 'evernote'
 cask 'firefox'
 cask 'flux'
 cask 'google-chrome'
+cask 'google-drive'
 cask 'isolator'
 cask 'iterm2'
 cask 'marked'
@@ -73,7 +85,9 @@ cask 'notational-velocity'
 cask 'rowanj-gitx'
 cask 'sequel-pro'
 cask 'slack'
+cask 'spotify'
 cask 'things'
+cask 'virtualbox'
 
 # Appstore applications
 
