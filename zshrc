@@ -42,7 +42,7 @@ alias s="vi + -c 'set filetype=markdown' ~/Dropbox/scratch.md"
 alias b="git browse"
 alias gtw="fswatch -o -0 . | xargs -0 -n 1 -I {} go test"
 alias repath="cd && cd -"
-alias gup-all='for D in $(ls); do (echo "\n\n>>> $D\n"; cd "$D"; g up); done'
+alias gup-all='for D in $(find . -name .git -maxdepth 2 | cut -d/ -f2); do (echo "\n\n>>> $D\n"; cd "$D"; g up); done'
 alias p="ping 8.8.8.8"
 alias venv="virtualenv ENV && source ENV/bin/activate && pip install -r requirements.txt"
 
@@ -54,4 +54,5 @@ compctl -W ~/govuk/ -/ gov
 gosrc() { cd $GOPATH/src/$1; }
 compctl -W $GOPATH/src/ -/ gosrc
 
+function w () { fswatch -o -0 . | xargs -0 -n 1 -I {} $@; }
 function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
