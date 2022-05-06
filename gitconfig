@@ -24,17 +24,18 @@
 	snapshot     = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	snap         = snapshot
 	standup      = !git --no-pager log --pretty=oneline --abbrev-commit --all --since yesterday --author `git config user.email`
-	merged       = !git branch -r --merged origin/master | grep -v master | grep -v HEAD | sed 's/  origin\\///g'
+	merged       = !git branch -r --merged origin/`git head-branch` | grep -v `git head-branch` | grep -v HEAD | sed 's/  origin\\///g'
 	rm-branch    = !sh -c \"(git branch -D $1 2>/dev/null || true) && git push origin :$1\" -
 	rm-merged    = !git merged | xargs -L1 git rm-branch
 	browse       = !hub browse
 	publish      = !git push -u origin `git symbolic-ref --short HEAD`
-	finish       = !OLD_BRANCH="`git symbolic-ref --short HEAD`" && git co master && git pl && git br -d "$OLD_BRANCH"
+	finish       = !OLD_BRANCH="`git symbolic-ref --short HEAD`" && git co "`git head-branch`" && git pl && git br -d "$OLD_BRANCH"
 	subup        = !git submodule foreach git pull origin master #&& git submodule update --init --recursive
-	reset-master = !git fetch && git checkout master && git reset --hard origin/master
+	reset-master = !git fetch && git checkout `git head-branch` && git reset --hard origin/`git head-branch`
 	begin        = !git init && git add . && git commit --allow-empty -m "Initial\\ commit" && echo && git --no-pager show --shortstat
 	branch-note  = "!git config branch.$(git symbolic-ref HEAD | sed \"s/refs\\/heads\\///\").description"
 	branches     = "!for b in $(git branch | sed 's/^. //g'); do git branch -vv --list \"$b\"; git config branch.$b.description | sed 's/^/    /'; done"
+	head-branch  = !git branch -rl '*/HEAD' | rev | cut -d/ -f1 | rev
 [merge]
 	tool = opendiff
 	ff = false
@@ -63,3 +64,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[init]
+	defaultBranch = main
